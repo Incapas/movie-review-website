@@ -1,0 +1,33 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'accounts/profile.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Profil</title>
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h1 class="profile-title">Profil de {{ user.username }}</h1>
+
+    <div class="user-reviews">
+        <h2 class="section-title">Mes Critiques</h2>
+        {% for review in reviews %}
+            <div class="review-item-profile">
+                <p class="review-movie-title">{{ review.movie.title }}</p>
+                <p class="review-date-published">Publiée le {{ review.date }}</p>
+                <div class="review-actions">
+                    <a href="{% url 'review' pk=review.pk %}" class="action-link view-link">Lire</a>
+                    <a href="{% url 'review_update' pk=review.pk %}" class="action-link edit-link">Modifier</a>
+                    <a href="{% url 'review_delete' pk=review.pk %}" class="action-link delete-link">Supprimer</a>
+                </div>
+            </div>
+        {% empty %}
+            <p class="no-reviews-message">Vous n'avez pas encore écrit de critiques.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'movies/style.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Accueil</title>
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <div class="form-container">
+        <h2 class="form-title">Rechercher un film</h2>
+        <form method="POST" class="form">
+            {% csrf_token %}
+            <div class="form-fields">
+                {{ form }}
+            </div>
+            <button type="submit" class="submit-button">Rechercher</button>
+        </form>
+    </div>
+
+    <div class="movies-grid">
+        {% for movie in page_obj %}
+        <div class="movie-card">
+            <div class="movie-header">
+                <h2>{{ movie.title }}</h2>
+            </div>
+
+            <div class="movie-details">
+                <p class="movie-duration">
+                    <strong>Synopsis :</strong> {{ movie.synopsis }}
+                </p>
+
+                <p class="movie-directors">
+                    <strong>Réalisateur(s) :</strong>
+                    {% for director in movie.direction.all %}
+                        {{ director.forename }} {{ director.lastname }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+            
+                <p class="movie-genres">
+                    <strong>Genre(s) :</strong>
+                    {% for gender in movie.gender.all %}
+                        {{ gender.label }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+        
+                <p class="movie-countries">
+                    <strong>Pays de production :</strong>
+                    {% for country in movie.country_of_production.all %}
+                        {{ country.label }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+
+                <p class="movie-duration">
+                    <strong>Durée :</strong> {{ movie.duration }} minutes
+                </p>
+                
+                <p class="movie-release-year">
+                    <strong>Année de sortie (en France) :</strong> {{ movie.release_year }}
+                </p>
+            </div>
+
+            <div class="movie-footer">
+                {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'write' pk=movie.pk %}">Rédiger une critique</a>
+                {% endif %}
+                <a class="nav-link" href="{% url 'reviews' pk=movie.pk %}">Voir les critiques</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; Première page</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Page précédente</a>
+        {% endif %}
+        
+        {% if page_obj.number %}
+        <span class="current">
+            Page {{ page_obj.number }}/{{ page_obj.paginator.num_pages }}
+        </span>
+        {% endif %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Prochaine page</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Dernière page &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}

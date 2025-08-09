@@ -1,0 +1,26 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'reviews/reviews.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Critiques</title>
+{% endblock %}
+
+{% block content %}
+    <div class="reviews-list">
+    {% for review in reviews %}
+        <div class="review-item">
+            <p class="review-title">{{ review.title }}</p>
+            <p class="review-author">Par {{ review.author }}</p>
+            <p class="review-date">Publiée le {{ review.date }}</p>
+            <p class="review-content">{{ review.content|truncatewords:20 }}</p>
+            <a href="{% url 'review' pk=review.pk %}" class="review-link">Lire la critique</a>
+        </div>
+    {% empty %}
+            <p class="no-reviews-message">Aucune critique n'a été écrite pour ce film.</p>
+    {% endfor %}
+    </div>
+{% endblock %}

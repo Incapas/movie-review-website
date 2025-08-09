@@ -1,0 +1,23 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'accounts/login.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Inscription</title>
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2 class="form-title">Se connecter</h2>
+    <form method="POST" class="form">
+        {% csrf_token %}
+        <div class="form-fields">
+            {{ form }}
+        </div>
+        <button type="submit" class="submit-button">Se connecter</button>
+    </form>
+</div>
+{% endblock %}

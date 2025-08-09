@@ -1,0 +1,99 @@
+/* Styles pour le conteneur principal de la liste de critiques */
+.reviews-list {
+    display: grid;
+    /* Crée une grille réactive avec un minimum de 320px par colonne, s'adaptant à l'espace */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacing-xl); /* Espacement généreux entre les critiques */
+    padding: var(--spacing-lg) 0; /* Padding vertical pour la grille */
+    max-width: 1200px; /* Limite la largeur totale de la grille */
+    margin: var(--spacing-md) auto; /* Centre la grille sur la page */
+}
+
+/* Styles pour chaque élément de critique individuel */
+.review-item {
+    background-color: var(--color-secondary); /* Fond gris foncé pour la carte de critique */
+    border-radius: var(--border-radius-md); /* Coins arrondis */
+    box-shadow: var(--shadow-md); /* Ombre subtile */
+    padding: var(--spacing-lg); /* Espacement interne généreux */
+    display: flex; /* Utilise flexbox pour organiser le contenu interne */
+    flex-direction: column; /* Organise les éléments en colonne */
+    justify-content: space-between; /* Pousse les actions vers le bas si le contenu est court */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transitions douces au survol */
+}
+
+.review-item:hover {
+    transform: translateY(-5px); /* Légère élévation au survol */
+    box-shadow: var(--shadow-hover); /* Ombre plus prononcée */
+}
+
+/* Styles pour le titre de la critique */
+.review-title {
+    font-family: var(--font-family-heading-secondary); /* Police secondaire pour le titre de la critique */
+    color: var(--color-primary); /* Met en évidence le titre avec la couleur primaire */
+    font-size: 1.5em; /* Taille de police confortable */
+    margin-top: 0; /* Supprime la marge supérieure par défaut */
+    margin-bottom: var(--spacing-md); /* Espacement sous le titre */
+    line-height: 1.3; /* Aération du titre */
+}
+
+/* Styles pour l'auteur de la critique */
+.review-author {
+    font-family: var(--font-family-body);
+    color: var(--color-text-secondary); /* Couleur discrète pour l'auteur */
+    font-size: 0.95em;
+    margin-bottom: var(--spacing-sm); /* Espacement sous l'auteur */
+}
+
+/* Styles pour la date de publication */
+.review-date {
+    font-family: var(--font-family-body);
+    color: var(--color-text-secondary); /* Couleur discrète pour la date */
+    font-size: 0.9em;
+    margin-bottom: var(--spacing-lg); /* Espacement sous la date, avant le contenu */
+}
+
+/* Styles pour le contenu tronqué de la critique */
+.review-content {
+    font-family: var(--font-family-body);
+    color: var(--color-text-primary);
+    font-size: 1em;
+    line-height: 1.6; /* Hauteur de ligne pour une bonne lisibilité */
+    margin-bottom: var(--spacing-xl); /* Espacement généreux sous le contenu tronqué */
+    flex-grow: 1; /* Permet au contenu de prendre l'espace restant, poussant le lien vers le bas */
+}
+
+/* Styles pour le lien "Lire la critique" */
+.review-link {
+    display: inline-block; /* Permet d'appliquer padding et margin */
+    background-color: var(--color-primary); /* Couleur principale pour le lien d'action */
+    color: var(--color-text-primary); /* Texte blanc */
+    padding: var(--spacing-sm) var(--spacing-md); /* Espacement interne */
+    border-radius: var(--border-radius-sm); /* Coins arrondis */
+    text-decoration: none; /* Pas de soulignement */
+    font-family: var(--font-family-heading-secondary);
+    font-size: 0.95em;
+    text-transform: uppercase; /* Texte en majuscules */
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: var(--spacing-md); /* Espace au-dessus du lien si flex-grow est appliqué */
+    align-self: flex-end; /* Aligne le lien à droite dans le flex container */
+}
+
+.review-link:hover {
+    background-color: #C70810; /* Un rouge légèrement plus foncé au survol */
+    transform: translateY(-2px); /* Léger mouvement vers le haut */
+}
+
+.review-link:active {
+    transform: translateY(0); /* Retour à la position normale au clic */
+}
+
+/* Styles pour le message "Aucune critique n'a été écrite..." */
+.no-reviews-message {
+    font-family: var(--font-family-body);
+    color: var(--color-text-secondary);
+    text-align: center; /* Centre le message */
+    font-size: 1.1em;
+    padding: var(--spacing-lg);
+    margin: var(--spacing-xl) auto; /* Centre le message verticalement */
+}

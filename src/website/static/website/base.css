@@ -1,0 +1,33 @@
+:root {
+    /* Couleurs */
+    --color-primary: #E50914; /* Rouge - Accents, boutons, liens importants */
+    --color-secondary: #222222; /* Gris très foncé - Arrière-plans secondaires, barre de navigation, cartes */
+    --color-background: #141414; /* Noir très léger - Fond principal du site */
+    --color-text-primary: #F5F5F1; /* Blanc cassé - Texte principal, titres */
+    --color-text-secondary: #AAAAAA; /* Gris clair - Synopsys, informations complémentaires, texte subtil */
+    --color-link-default: #BBBBBB; /* Gris moyen - Couleur par défaut des liens */
+    --color-link-hover: var(--color-primary); /* Rouge - Couleur des liens au survol */
+    --color-input-background: #333333; /* Gris foncé - Fond des champs de formulaire */
+    --color-input-border: #555555; /* Gris - Bordure des champs de formulaire */
+
+    /* Typographie */
+    --font-family-heading-primary: 'Oswald', sans-serif; /* Titres principaux (H1) */
+    --font-family-heading-secondary: 'Roboto', sans-serif; /* Titres secondaires (H2, H3), navigation, boutons */
+    --font-family-body: 'Open Sans', sans-serif; /* Corps de texte, paragraphes, descriptions */
+
+    /* Espacements courants */
+    --spacing-sm: 10px;
+    --spacing-md: 15px;
+    --spacing-lg: 20px;
+    --spacing-xl: 25px;
+    --spacing-xxl: 30px
+
+    /* Rayons de bordure */
+    --border-radius-sm: 5px; /* Petits arrondis (boutons, inputs) */
+    --border-radius-md: 8px; /* Arrondis des cartes */
+
+    /* Ombres */
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.5); /* Ombre légère (barre de navigation) */
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.4); /* Ombre des cartes */
+    --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.6); /* Ombre des cartes au survol */
+}

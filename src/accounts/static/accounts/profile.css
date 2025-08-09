@@ -1,0 +1,145 @@
+/* Styles pour le conteneur principal du profil */
+.profile-container {
+    padding: var(--spacing-xl) var(--spacing-xxl); /* Espacement intérieur généreux */
+    max-width: 900px; /* Largeur maximale pour le contenu du profil */
+    margin: var(--spacing-xl) auto; /* Centrage horizontal et marge verticale */
+    background-color: var(--color-background); /* Utilise la couleur de fond principale */
+    color: var(--color-text-primary); /* Texte principal */
+    box-sizing: border-box;
+}
+
+/* Styles pour le titre principal du profil (H1) */
+.profile-title {
+    font-family: var(--font-family-heading-primary); /* Police des titres principaux */
+    color: var(--color-text-primary);
+    text-align: center;
+    font-size: 3em; /* Taille plus grande pour le titre H1 */
+    margin-top: 0;
+    margin-bottom: var(--spacing-xl); /* Plus d'espace sous le titre */
+}
+
+/* Conteneur des critiques de l'utilisateur */
+.user-reviews {
+    background-color: var(--color-secondary); /* Fond gris foncé pour la section */
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-lg) var(--spacing-xl); /* Espacement intérieur */
+    margin-top: var(--spacing-xl); /* Marge au-dessus de la section des critiques */
+}
+
+/* Titre de la section "Mes Critiques" (H2) */
+.section-title {
+    font-family: var(--font-family-heading-secondary); /* Police des titres secondaires */
+    color: var(--color-text-primary);
+    font-size: 1.8em; /* Taille pour les titres de section H2 */
+    margin-top: 0;
+    margin-bottom: var(--spacing-lg); /* Espacement sous le titre de section */
+    text-align: center; /* Centrer le titre de section */
+}
+
+/* Styles pour chaque élément de critique dans le profil */
+.review-item-profile {
+    background-color: var(--color-input-background); /* Fond légèrement plus clair pour chaque critique */
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md); /* Espacement entre les critiques */
+    display: flex;
+    flex-direction: column; /* Organise le contenu en colonne */
+    gap: var(--spacing-sm); /* Espacement entre les éléments internes de la critique */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3); /* Ombre très légère */
+}
+
+/* Titre du film dans la critique */
+.review-movie-title {
+    font-family: var(--font-family-heading-secondary);
+    color: var(--color-primary); /* Met en évidence le titre du film */
+    font-size: 1.2em;
+    font-weight: 700;
+    margin: 0; /* Réinitialise les marges par défaut des paragraphes */
+}
+
+/* Date de publication de la critique */
+.review-date-published {
+    font-family: var(--font-family-body);
+    color: var(--color-text-secondary);
+    font-size: 0.9em;
+    margin: 0; /* Réinitialise les marges par défaut des paragraphes */
+}
+
+/* Conteneur des actions (Lire, Modifier, Supprimer) */
+.review-actions {
+    display: flex;
+    justify-content: flex-end; /* Aligne les liens d'action à droite */
+    gap: var(--spacing-md); /* Espacement entre les liens d'action */
+    margin-top: var(--spacing-sm); /* Marge au-dessus des liens d'action */
+}
+
+/* Styles de base pour tous les liens d'action */
+.action-link {
+    font-family: var(--font-family-body);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-sm);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    white-space: nowrap; /* Empêche les liens de se casser sur plusieurs lignes */
+}
+
+/* Styles spécifiques pour le lien "Lire" */
+.action-link.view-link {
+    background-color: var(--color-primary);
+    color: var(--color-text-primary);
+}
+
+.action-link.view-link:hover {
+    background-color: #C70810; /* Rouge légèrement plus foncé */
+}
+
+/* Styles spécifiques pour le lien "Modifier" */
+.action-link.edit-link {
+    background-color: #555555; /* Gris moyen */
+    color: var(--color-text-primary);
+}
+
+.action-link.edit-link:hover {
+    background-color: #777777; /* Gris plus clair au survol */
+}
+
+/* Styles spécifiques pour le lien "Supprimer" */
+.action-link.delete-link {
+    background-color: #D32F2F; /* Rouge plus foncé pour l'action de suppression */
+    color: var(--color-text-primary);
+}
+
+.action-link.delete-link:hover {
+    background-color: #B71C1C; /* Rouge encore plus foncé au survol */
+}
+
+/* Message si aucune critique n'est trouvée */
+.no-reviews-message {
+    font-family: var(--font-family-body);
+    color: var(--color-text-secondary);
+    text-align: center;
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+/* Media query pour les petits écrans (mobile) */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: var(--spacing-lg) var(--spacing-md); /* Moins de padding sur mobile */
+    }
+
+    .profile-title {
+        font-size: 2.5em; /* Taille plus petite sur mobile */
+    }
+
+    .user-reviews {
+        padding: var(--spacing-md); /* Moins de padding sur mobile */
+    }
+
+    .action-link {
+        padding: var(--spacing-sm) var(--spacing-md); /* Pads plus petits sur mobile */
+        font-size: 0.9em;
+    }
+}

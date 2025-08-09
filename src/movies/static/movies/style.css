@@ -1,0 +1,243 @@
+.form-container {
+    background-color: var(--color-secondary); /* Utilise la couleur secondaire pour le fond */
+    border-radius: var(--border-radius-md); /* Arrondit les coins du conteneur */
+    box-shadow: var(--shadow-md); /* Ajoute une ombre subtile */
+    padding: var(--spacing-lg); /* Espacement interne */
+    margin-bottom: var(--spacing-xl); /* Marge sous le conteneur du formulaire */
+    max-width: 600px; /* Limite la largeur du formulaire */
+    margin-left: auto;
+    margin-right: auto; /* Centre le conteneur */
+    box-sizing: border-box; /* S'assure que le padding n'ajoute pas de largeur */
+}
+
+.form-title {
+    font-family: var(--font-family-heading-secondary); /* Utilise la police des titres secondaires */
+    color: var(--color-text-primary); /* Couleur du texte principal */
+    text-align: center; /* Centre le titre */
+    margin-top: 0; /* Pas de marge supérieure par défaut */
+    margin-bottom: var(--spacing-lg); /* Marge sous le titre */
+    font-size: 1.8em; /* Taille de police légèrement plus petite pour un h2 */
+}
+
+.form {
+    display: flex;
+    flex-direction: column; /* Organise les éléments du formulaire en colonne */
+    gap: var(--spacing-md); /* Espacement entre les éléments du formulaire */
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm); /* Espacement entre les champs individuels */
+    width: 100%; /* S'assurer que le conteneur des champs prend toute la largeur disponible */
+}
+
+/* Cible les conteneurs directs des champs générés par Django (souvent des div ou li) */
+.form-fields > div,
+.form-fields > li {
+    width: 100%; /* Assure que ce conteneur prend toute la largeur de son parent */
+    margin-bottom: var(--spacing-sm); /* Espacement entre les groupes label/input */
+}
+
+/* Styles pour les champs de formulaire (input, select, textarea) */
+.form-fields input[type="text"],
+.form-fields input[type="number"],
+.form-fields select,
+.form-fields textarea {
+    width: 100%; /* L'input prend 100% de son parent direct */
+    padding: var(--spacing-sm); /* Espacement interne */
+    border: 1px solid var(--color-input-border); /* Bordure définie par la variable */
+    background-color: var(--color-input-background); /* Fond défini par la variable */
+    color: var(--color-text-primary); /* Couleur du texte dans les champs */
+    border-radius: var(--border-radius-sm); /* Arrondit les coins des champs */
+    font-family: var(--font-family-body); /* Police du corps de texte */
+    font-size: 1em; /* Taille de police standard */
+    box-sizing: border-box; /* **TRÈS IMPORTANT** : Inclut padding et border dans la largeur totale */
+}
+
+.form-fields input[type="text"]::placeholder,
+.form-fields textarea::placeholder {
+    color: var(--color-text-secondary); /* Couleur du placeholder */
+}
+
+.form-fields input[type="text"]:focus,
+.form-fields input[type="number"]:focus,
+.form-fields select:focus,
+.form-fields textarea:focus {
+    outline: none; /* Supprime le contour par défaut au focus */
+    border-color: var(--color-primary); /* Change la couleur de la bordure au focus */
+    box-shadow: 0 0 0 2px rgba(var(--color-primary), 0.5); /* Ombre légère au focus */
+}
+
+/* Si les éléments de formulaire Django génèrent des balises <label>, vous pouvez les styliser */
+.form-fields label {
+    font-family: var(--font-family-body);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600; /* Rendre le label plus visible */
+    display: block; /* S'assure que le label prend sa propre ligne si nécessaire */
+}
+
+
+/* Styles pour le bouton de soumission */
+.submit-button {
+    background-color: var(--color-primary); /* Couleur principale pour le bouton */
+    color: var(--color-text-primary); /* Texte blanc sur le bouton */
+    padding: var(--spacing-md) var(--spacing-lg); /* Espacement interne */
+    border: none; /* Pas de bordure */
+    border-radius: var(--border-radius-sm); /* Arrondit les coins */
+    font-family: var(--font-family-heading-secondary); /* Police secondaire */
+    font-size: 1.1em; /* Taille de police légèrement plus grande */
+    cursor: pointer; /* Curseur pointeur au survol */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transitions douces */
+    text-transform: uppercase; /* Texte en majuscules */
+    font-weight: 700; /* Gras */
+    width: 100%; /* Le bouton prend toute la largeur du formulaire pour s'aligner avec l'input */
+    box-sizing: border-box; /* S'assure que le padding n'ajoute pas de largeur */
+}
+
+.submit-button:hover {
+    background-color: #C70810; /* Un rouge légèrement plus foncé au survol */
+    transform: translateY(-2px); /* Léger déplacement vers le haut au survol */
+}
+
+.submit-button:active {
+    transform: translateY(0); /* Retourne à la position normale au clic */
+}
+
+
+/* Styles pour le conteneur des cartes de film */
+.movies-grid {
+    display: grid;
+    /* Crée exactement 2 colonnes de largeur égale, sans adaptation */
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl); /* Espacement entre les cartes */
+    padding: var(--spacing-lg) 0; /* Padding vertical pour le conteneur de la grille */
+    max-width: 1200px; /* Limite la largeur de la grille complète */
+    margin: 0 auto; /* Centre la grille sur la page */
+}
+
+/* Styles pour les cartes de film individuelles */
+.movie-card {
+    background-color: var(--color-secondary); /* Fond gris foncé pour la carte */
+    border-radius: var(--border-radius-md); /* Coins arrondis */
+    box-shadow: var(--shadow-md); /* Ombre légère */
+    padding: var(--spacing-lg); /* Espacement interne */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transitions pour le survol */
+    display: flex; /* Utilise flexbox pour le contenu interne des cartes */
+    flex-direction: column; /* Organise le contenu en colonne */
+    justify-content: space-between; /* Pour pousser le footer vers le bas */
+}
+
+.movie-card:hover {
+    transform: translateY(-5px); /* Légère élévation au survol */
+    box-shadow: var(--shadow-hover); /* Ombre plus prononcée au survol */
+}
+
+.movie-header {
+    margin-bottom: var(--spacing-md); /* Marge sous l'en-tête du film */
+}
+
+.movie-header h2 {
+    font-family: var(--font-family-heading-secondary); /* Police des titres secondaires */
+    color: var(--color-text-primary); /* Couleur du texte principal */
+    font-size: 1.6em; /* Taille du titre du film */
+    margin-top: 0; /* Supprime la marge supérieure par défaut */
+    margin-bottom: 0; /* Supprime la marge inférieure par défaut */
+}
+
+.movie-details {
+    flex-grow: 1; /* Permet aux détails de prendre l'espace restant, poussant le footer */
+    margin-bottom: var(--spacing-lg); /* Marge sous les détails et avant le footer */
+}
+
+.movie-details p {
+    font-family: var(--font-family-body);
+    color: var(--color-text-secondary); /* Couleur du texte secondaire pour les détails */
+    margin-bottom: var(--spacing-sm); /* Marge sous chaque paragraphe de détail */
+    line-height: 1.4; /* Hauteur de ligne pour la lisibilité */
+}
+
+.movie-details p strong {
+    color: var(--color-text-primary); /* Rend les labels "forts" plus visibles */
+}
+
+.movie-footer {
+    display: flex;
+    justify-content: flex-end; /* Aligne les liens du footer à droite */
+    gap: var(--spacing-md); /* Espacement entre les liens */
+    margin-top: auto; /* Pousse le footer vers le bas si les détails sont courts */
+}
+
+.pagination {
+    display: flex; /* Utilise flexbox pour centrer le contenu */
+    justify-content: center; /* Centre horizontalement les éléments */
+    align-items: center; /* Centre verticalement les éléments */
+    padding: var(--spacing-lg) 0; /* Ajoute de l'espace au-dessus et en-dessous de la pagination */
+    margin-top: var(--spacing-xl); /* Marge au-dessus de la pagination pour la séparer de la grille */
+    margin-bottom: var(--spacing-xl); /* Marge en dessous de la pagination */
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur les petits écrans */
+    gap: var(--spacing-md); /* Espacement entre les blocs de pagination */
+}
+
+.pagination .step-links {
+    display: flex; /* Organise les liens côte à côte */
+    gap: var(--spacing-sm); /* Espacement entre les liens individuels */
+    flex-wrap: wrap; /* Permet aux liens de passer à la ligne si l'espace est insuffisant */
+    justify-content: center; /* Centre les liens même s'ils passent à la ligne */
+    align-items: center;
+}
+
+.pagination a {
+    background-color: var(--color-secondary); /* Fond du bouton de pagination */
+    color: var(--color-text-primary); /* Couleur du texte des liens */
+    text-decoration: none; /* Supprime le soulignement */
+    padding: var(--spacing-sm) var(--spacing-md); /* Espacement interne des liens */
+    border-radius: var(--border-radius-sm); /* Coins arrondis */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease; /* Transitions douces */
+    font-family: var(--font-family-body);
+    font-weight: 600;
+    white-space: nowrap; /* Empêche les liens de se couper en plusieurs lignes */
+}
+
+.pagination a:hover {
+    background-color: var(--color-primary); /* Change la couleur de fond au survol */
+    color: var(--color-text-primary); /* Le texte reste blanc au survol */
+    transform: translateY(-2px); /* Léger déplacement vers le haut */
+    box-shadow: var(--shadow-md); /* Ombre au survol */
+}
+
+.pagination .current {
+    background-color: var(--color-primary); /* Fond pour la page actuelle */
+    color: var(--color-text-primary); /* Texte blanc pour la page actuelle */
+    padding: var(--spacing-sm) var(--spacing-md); /* Espacement interne */
+    border-radius: var(--border-radius-sm); /* Coins arrondis */
+    font-family: var(--font-family-body);
+    font-weight: 700; /* Texte plus gras */
+    white-space: nowrap;
+    box-shadow: var(--shadow-md); /* Ajoute une ombre pour la page actuelle */
+}
+
+/* Styles pour les petits écrans (responsive) */
+@media (max-width: 768px) {
+    .movies-grid {
+        grid-template-columns: 1fr; /* Une seule colonne sur les petits écrans */
+        padding: var(--spacing-md) var(--spacing-sm); /* Ajuste le padding */
+    }
+
+    .form-container {
+        margin: var(--spacing-lg) auto; /* Plus de marge autour du formulaire */
+        padding: var(--spacing-md);
+    }
+
+    .pagination .step-links {
+        flex-direction: column; /* Les liens de pagination s'empilent */
+        gap: var(--spacing-xs); /* Réduit l'espace entre les liens empilés */
+    }
+
+    .pagination a,
+    .pagination .current {
+        width: 100%; /* Les éléments de pagination prennent toute la largeur */
+        text-align: center; /* Centre le texte */
+    }
+}

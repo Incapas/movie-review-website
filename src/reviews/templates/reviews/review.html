@@ -1,0 +1,25 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'reviews/review.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Critique</title>
+{% endblock %}
+
+{% block content %}
+<div class="review-detail-container">
+    <h2 class="review-detail-title">Détails de la Critique</h2>
+    <div class="review-meta">
+        <p class="review-detail-date">Publié le : {{ review.date }}</p>
+        {% if review.update_date %}
+        <p class="review-detail-update-date">Dernière mise à jour : {{ review.update_date }}</p>
+        {% endif %}
+    </div>
+    <div class="review-content-display">
+        <p>{{ review.content }}</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,97 @@
+/* Styles pour le conteneur principal de l'action de suppression */
+.action-container {
+    background-color: var(--color-secondary); /* Fond gris foncé */
+    border-radius: var(--border-radius-md); /* Coins arrondis */
+    box-shadow: var(--shadow-md); /* Ombre subtile */
+    margin: var(--spacing-xl) auto; /* Marge verticale et centrage horizontal */
+    max-width: 550px; /* Largeur maximale pour un contenu concis */
+    text-align: center; /* Centre le texte et les éléments à l'intérieur */
+    box-sizing: border-box; /* Inclut padding et border dans la largeur totale */
+    padding: 2em 4em;
+}
+
+/* Styles pour le titre de l'action */
+.action-title {
+    font-family: var(--font-family-heading-secondary); /* Police secondaire */
+    color: var(--color-primary); /* Utilise la couleur primaire pour attirer l'attention */
+    font-size: 2.2em; /* Taille de police plus grande */
+    margin-top: 0; /* Pas de marge supérieure par défaut */
+    margin-bottom: var(--spacing-lg); /* Espacement sous le titre */
+}
+
+/* Styles pour le message de confirmation */
+.action-message {
+    font-family: var(--font-family-body);
+    color: var(--color-text-primary);
+    font-size: 1.1em; /* Taille de police légèrement plus grande pour la lisibilité */
+    line-height: 1.6; /* Hauteur de ligne pour une meilleure lecture */
+    margin-bottom: 1em; /* Espacement généreux sous le message */
+}
+
+/* Styles pour le formulaire d'action (contient les boutons) */
+.action-form {
+    display: flex;
+    flex-direction: column; /* Organise le contenu en colonne */
+    align-items: center; /* Centre les éléments horizontalement */
+}
+
+/* Conteneur pour les boutons d'action */
+.action-buttons {
+    display: flex; /* Utilise flexbox pour aligner les boutons côte à côte */
+    gap: var(--spacing-lg); /* Espacement entre les boutons */
+    justify-content: center; /* Centre les boutons dans leur conteneur */
+    width: 100%; /* Permet aux boutons de prendre la largeur disponible si besoin */
+    max-width: 400px; /* Limite la largeur des boutons pour éviter qu'ils ne soient trop étirés */
+}
+
+/* Styles pour le bouton "Annuler" */
+.button-cancel {
+    background-color: var(--color-input-background); /* Fond plus discret */
+    color: var(--color-text-secondary); /* Texte gris clair */
+    padding: var(--spacing-md) var(--spacing-xl); /* Espacement interne */
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-family-heading-secondary);
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none; /* Pas de soulignement pour le lien */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    flex-grow: 1; /* Permet au bouton de s'étirer */
+    max-width: 180px; /* Largeur maximale pour le bouton individuel */
+    box-sizing: border-box;
+    display: flex; /* Pour centrer le texte du lien */
+    justify-content: center;
+    align-items: center;
+}
+
+.button-cancel:hover {
+    background-color: var(--color-input-border); /* Fond légèrement plus foncé au survol */
+    color: var(--color-text-primary); /* Texte plus blanc au survol */
+}
+
+/* Styles pour le bouton "Supprimer" */
+.button-delete {
+    background-color: var(--color-primary); /* Couleur rouge vif pour l'action de suppression */
+    color: var(--color-text-primary); /* Texte blanc */
+    padding: var(--spacing-md) var(--spacing-xl); /* Espacement interne */
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-family: var(--font-family-heading-secondary);
+    font-size: 1.1em; /* Taille de police légèrement plus grande pour l'importance */
+    cursor: pointer;
+    text-transform: uppercase; /* Texte en majuscules */
+    font-weight: 700; /* Gras */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    flex-grow: 1; /* Permet au bouton de s'étirer */
+    max-width: 180px; /* Largeur maximale pour le bouton individuel */
+    box-sizing: border-box;
+}
+
+.button-delete:hover {
+    background-color: #C70810; /* Un rouge légèrement plus foncé au survol */
+    transform: translateY(-2px); /* Léger déplacement vers le haut */
+}
+
+.button-delete:active {
+    transform: translateY(0); /* Retour à la position normale au clic */
+}

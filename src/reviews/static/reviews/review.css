@@ -1,0 +1,52 @@
+/* Styles pour le conteneur principal de la page de détails de la critique */
+.review-detail-container {
+    background-color: var(--color-secondary); /* Fond gris foncé */
+    border-radius: var(--border-radius-md); /* Coins arrondis */
+    box-shadow: var(--shadow-md); /* Ombre subtile */
+    padding: 1em; /* Espacement interne généreux pour l'aération */
+    margin: var(--spacing-xl) auto; /* Marge verticale et centrage horizontal */
+    max-width: 900px; /* Largeur maximale pour une bonne lisibilité du contenu */
+    box-sizing: border-box; /* Inclut padding et border dans la largeur totale */
+}
+
+/* Styles pour le titre de la critique (film concerné) */
+.review-detail-title {
+    font-family: var(--font-family-heading-secondary); /* Police secondaire */
+    color: var(--color-primary); /* Met en évidence le titre avec la couleur primaire */
+    font-size: 2.5em; /* Grande taille de police */
+    text-align: center; /* Centre le titre */
+    margin-top: 0; /* Pas de marge supérieure par défaut */
+    margin-bottom: var(--spacing-xl); /* Espacement généreux sous le titre */
+    line-height: 1.2; /* Aération du titre */
+}
+
+/* Styles pour le conteneur des méta-informations (dates) */
+.review-meta {
+    display: flex; /* Utilise flexbox pour aligner les dates */
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne sur petits écrans */
+    justify-content: center; /* Centre les dates */
+    gap: var(--spacing-lg); /* Espacement entre les dates */
+    font-family: var(--font-family-body);
+    color: var(--color-text-secondary); /* Couleur discrète pour les méta-informations */
+    font-size: 0.95em;
+    margin-bottom: var(--spacing-xxl); /* Espacement généreux sous les méta-informations */
+    padding-bottom: 1em;
+}
+
+/* Styles pour les paragraphes de date */
+.review-detail-date,
+.review-detail-update-date {
+    margin: 0; /* Supprime les marges par défaut des paragraphes pour flexbox */
+}
+
+/* Styles pour le paragraphe de contenu de la critique */
+.review-content-display p {
+    font-family: var(--font-family-body);
+    color: var(--color-text-primary);
+    font-size: 1.15em; /* Taille de police confortable pour la lecture longue */
+    line-height: 1.8; /* **Très important** pour la lisibilité du texte long */
+    margin-top: 0; /* Supprime la marge supérieure par défaut */
+    margin-bottom: 0; /* Supprime la marge inférieure par défaut */
+    white-space: pre-wrap; /* Préserve les retours à la ligne et les espaces du texte d'origine */
+    word-wrap: break-word; /* Permet aux mots longs de se casser pour ne pas déborder */
+}
