@@ -1,101 +1,130 @@
-# 🎬 Critiques de film (Django)
+# Films & Critiques
 
-## Description du Projet
+> Un catalogue de films où chacun peut lire les avis des autres et publier les siens.
 
-Ce projet est une application web de critiques de films développée avec le framework **Django** (Python). Conçue pour l'apprentissage et l'initiation au développement web *full-stack*, l'application permet aux utilisateurs de **consulter les critiques** soumises par les autres membres et, après inscription, d'**écrire et de gérer leurs propres critiques** de films.
+Application web de critiques de films : le visiteur parcourt le catalogue, cherche un titre et lit les critiques déjà publiées ; une fois inscrit, il rédige les siennes et les gère depuis son profil. Le contenu du catalogue est administré via l'interface d'administration de Django.
 
-L'application est légère, axée sur les opérations **CRUD** (Create, Read, Update, Delete) de base pour les critiques, les films et les comptes utilisateurs.
-
-### Architecture d'Applications
-
-Le projet est divisé en plusieurs applications (apps) pour une structure modulaire typique de Django :
-
-* **`website`** : Configuration principale du projet et pages statiques (accueil, etc.).
-* **`accounts`** : Gestion des utilisateurs (inscription, connexion/déconnexion).
-* **`movies`** : Modèles et vues pour la gestion des données de base sur les films.
-* **`reviews`** : Logique et modèles pour la soumission, l'affichage et la gestion des critiques.
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-5.2-092E20?logo=django&logoColor=white)
+![Base de données](https://img.shields.io/badge/base%20de%20données-SQLite-003B57?logo=sqlite&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-aucun-6b7280)
 
 ---
 
-## 👥 Contributions au Projet
+## Le problème
 
-### 👩 Développeur Initial
+Les avis qu'on se fait d'un film finissent dans un carnet, une note de téléphone ou un fil de discussion : personne d'autre ne les lit, et l'auteur lui-même ne retrouve pas ce qu'il avait écrit sur un titre vu deux ans plus tôt.
 
-Contribution résidant dans la **conception de l'architecture backend** (modèles, vues, URLs), la **sécurité** et la **logique d'interaction** de l'application.
+Cette application rassemble les films et les critiques au même endroit, chaque critique restant rattachée à son film et à son auteur.
 
-| Catégorie | Description de la contribution |
-| :--- | :--- |
-| **Architecture Django** | Conception des modèles (`models.py`) pour les utilisateurs, les films et les critiques. |
-| **Logique Fonctionnelle** | Développement de toutes les **Vues (Views)** et des **URLs (URLConf)** pour la navigation et les opérations CRUD. |
-| **Base de Données** | Configuration de la base de données (SQLite par défaut) et gestion des migrations. |
-| **Sécurité/Comptes** | Implémentation du système d'authentification et d'autorisation Django (app `accounts`). |
+## Fonctionnalités
 
-### 🧑 Assistant IA Gemini
+- **Catalogue paginé** — dix films par page, chacun avec son synopsis, ses réalisateurs, ses genres, ses pays de production, sa durée et son année de sortie en France.
+- **Recherche par titre** — sur une partie du titre, sans tenir compte de la casse (« ali » trouve *Alien*).
+- **Critiques par film** — la liste affiche les vingt premiers mots de chaque critique, avec son auteur et sa date ; un lien ouvre le texte complet.
+- **Comptes utilisateurs** — inscription avec règles vérifiées à la saisie : nom d'utilisateur de 6 à 50 caractères alphanumériques, mot de passe d'au moins 10 caractères comportant majuscule, minuscule, chiffre et caractère spécial.
+- **Espace personnel** — le profil liste les critiques de l'utilisateur connecté et permet de les relire, modifier ou supprimer ; modification et suppression sont refusées à quiconque n'en est pas l'auteur.
+- **Administration du catalogue** — films, réalisateurs, genres et pays se saisissent dans l'admin Django, avec autocomplétion sur les relations et édition directe depuis la liste ; une critique peut y être dépubliée sans être supprimée.
 
-Contribution entièrement axée sur la **couche de présentation** pour offrir une interface utilisateur agréable et réactive sans détourner l'attention du développeur de la logique backend.
+## Technologies
 
-| Catégorie | Description de la Contribution |
-| :--- | :--- |
-| **Structure HTML** | Création de la structure et du balisage des templates HTML de base (`base.html`, formulaires, affichage des listes). |
-| **Stylisation (CSS)** | Réalisation de l'intégralité du **CSS** (feuilles de style) pour assurer la mise en page, le design et la responsivité. |
-| **Intégration Front-end** | Mise en forme des formulaires d'authentification et de soumission de critiques. |
+| Outil | Rôle |
+|---|---|
+| [Python 3.12](https://www.python.org/) | Langage |
+| [Django 5.2](https://www.djangoproject.com/) | Modèles, vues, formulaires, authentification, administration |
+| [django-environ](https://django-environ.readthedocs.io/) | Lecture de la `SECRET_KEY` depuis un fichier `.env` |
+| [SQLite](https://www.sqlite.org/) | Base de données locale, sans service à installer |
 
----
+## Installation
 
-## 🛠️ Prérequis
-
-Ce projet n'est pas destiné à être déployé en production. L'exécution se fait uniquement en local.
-
-### Prérequis
-
-Assurez-vous d'avoir **Python** installé sur votre système.
-
-1.  **Python 3.x**
-2.  Les dépendances nécessaires (Django, etc.).
+Prérequis : Python 3.12. Aucun service externe, la base est un simple fichier.
 
 ```bash
+git clone git@github.com:Incapas/movie-review-website.git
+cd movie-review-website
+
+python3.12 -m venv env
+source env/bin/activate          # Windows : env\Scripts\activate
 pip install -r requirements.txt
-````
+```
 
------
+Variable d'environnement, à placer dans `src/website/.env` :
 
-## 🚀 Démarrage
+| Variable | Provenance |
+|---|---|
+| `SECRET_KEY` | Chaîne aléatoire générée localement, propre à l'installation. |
 
-### 💻 Exécution locale
+Sans ce fichier, une clé par défaut est utilisée : l'application démarre, mais cette valeur n'a rien de secret et ne doit pas servir au-delà d'un essai.
 
-1.  **Clonez le dépôt :**
+Préparation de la base, depuis le dossier `src/` :
 
-    ```bash
-    git clone [URL_DEPOT]
-    cd [NOM_DU_DEPOT]
-    ```
+```bash
+cd src
+python manage.py migrate
+python manage.py createsuperuser
+```
 
-2.  **Installez les dépendances :**
+## Utilisation
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+cd src
+python manage.py runserver
+```
 
-3.  **Appliquez les migrations :**
-    Créez la structure de la base de données SQLite.
+L'application répond sur `http://127.0.0.1:8000/`. La page d'accueil est le catalogue ; la barre de navigation mène à l'inscription, à la connexion puis au profil.
 
-    ```bash
-    python manage.py migrate
-    ```
+Sur une base neuve, le catalogue est vide : les films s'ajoutent d'abord depuis `http://127.0.0.1:8000/admin/`, avec le compte créé par `createsuperuser`. `manage.py` se trouve dans `src/` — lancé depuis la racine du dépôt, le serveur ne démarre pas.
 
-4.  **Lancez le serveur de développement :**
-    Le serveur sera accessible à `http://127.0.0.1:8000/`.
+`DEBUG` est à `True` et `ALLOWED_HOSTS` est vide : cette configuration est celle d'un développement local, pas d'une mise en ligne.
 
-    ```bash
-    python manage.py runserver
-    ```
+## Tests
 
------
+```bash
+cd src
+python manage.py test
+```
 
-## 📝 Guide d'Utilisation
+Il n'existe aujourd'hui aucun test : les fichiers `tests.py` des trois applications sont les squelettes créés par Django et la commande ne vérifie donc rien. Il n'y a pas non plus de mesure de couverture.
 
-1.  **Accéder à l'application** : Ouvrez votre navigateur et naviguez vers l'adresse indiquée par le serveur (`http://127.0.0.1:8000/`).
-2.  **Consulter** : La page d'accueil affiche les films ou les dernières critiques. Vous pouvez parcourir le contenu sans être connecté.
-3.  **S'inscrire** : Pour écrire une critique, cliquez sur l'option d'inscription (ou `Sign Up`) pour créer votre compte utilisateur (via l'app `accounts`).
-4.  **Écrire une Critique** : Une fois connecté, naviguez vers un film et utilisez le formulaire pour soumettre votre évaluation (via l'app `reviews`).
-5.  **Gérer le Contenu** : Les utilisateurs peuvent modifier ou supprimer uniquement les critiques qu'ils ont écrites.
+## Structure du projet
+
+```
+src/
+  manage.py                Point d'entrée des commandes Django
+  website/                 Projet : réglages, URLs racines, gabarit et styles communs
+    settings.py            Configuration, lecture du .env, langue fr-FR
+    urls.py                Aiguillage : / → movies, /film/ → reviews, /utilisateur/ → accounts
+  accounts/                Inscription, connexion, déconnexion, profil
+    forms.py               Règles de validation du nom d'utilisateur et du mot de passe
+  movies/                  Catalogue : Movie, Director, Gender, Country
+    views.py               Liste paginée et recherche par titre
+  reviews/                 Critiques : lecture, rédaction, modification, suppression
+    models.py              Review, rattachée à un film et à son auteur
+```
+
+Chaque application embarque ses propres gabarits (`templates/<app>/`) et ses feuilles de style (`static/<app>/`) ; seuls le gabarit de base et les styles partagés vivent dans `website/`. Les dépendances vont des critiques vers les films et les utilisateurs, jamais l'inverse : `movies` ignore `reviews`.
+
+## Contributeurs
+
+### Développeur
+
+Conception, décisions et validation du produit :
+
+- définition du besoin et des règles métier : modélisation des films et de leurs relations, critique rattachée à un film et à un auteur, droit de modification réservé à l'auteur, règles d'inscription ;
+- choix d'ergonomie : catalogue comme page d'accueil, recherche par titre, pagination à dix films, profil regroupant ses propres critiques ;
+- choix techniques structurants : Django, découpage en applications `accounts` / `movies` / `reviews`, code applicatif isolé dans `src/`, URLs en français, `SECRET_KEY` sortie du dépôt via `django-environ` ;
+- écriture du backend : modèles, vues, formulaires, URLs, configuration de l'administration et migrations.
+
+### Assistant IA — Gemini
+
+Réalisation de la couche de présentation sous la direction du développeur :
+
+- structure des gabarits HTML : gabarit de base, navigation, formulaires, listes de films et de critiques ;
+- feuilles de style de chaque application et mise en page d'ensemble ;
+- mise en forme des formulaires d'inscription, de connexion et de rédaction de critique.
+
+Chaque modification a été relue et validée par le développeur avant intégration.
+
+## Licence
+
+GNU General Public License, version 3, 29 juin 2007.
